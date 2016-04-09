@@ -1,0 +1,16 @@
+language: ruby
+sudo: false
+cache: bundler
+before_install:
+- gem install bundler
+before_script:
+- createdb test
+rvm:
+- '2.3.0'
+- '2.2'
+- '2.1'
+notifications:
+  email: false
+env:
+  global:
+    secure: OvcOmU3tTrRrgXAAZpZVMbgwtxL7NtF35hf1sBhR8K+x1zZvcJkO1ADc60zzcXsMSIfavsD6uUPE0V92OJ+AgJPJq85skXr0UaYWmCDsEcnCqCl3HQYph1d6ntzZ2ZVC7Oz/nwuk2oaTL02wXuh/2XsztvDSTHWsNAWye787u4mPU4n4YXggsSCIU6zHSz5orfkKR4DkXT7jhrVP6lIn+an+j4RyZJ2Y7HE32vtV93bq1bdSiyJNs0fOY6iGpPRoD86mO2dRSdpQPPI4y0ArnPH6dFiWTIy94xWNyb64vvzDCqsJdj1A/4h13AUNqK5rG8nuWllWCe455o17fTPJchqM71ImjrOyeHFPkGvkID2UL0tgIApNl3bBdANWDITXLeJiAtDHIlFcisxda2qJs3pe4YM+UkspInofHvO80YFT4/IBfYB1bbWwcP8+bisvpUoStjZXO7VPAilxVC+RimGK1vp74WLHm1LQGkINpeEhFyhAxYyuOGHhTLlfquVAhQbCy6bV78NHeoxpTBjt6u0ZpBlDe9yJXO0NsRqyhCSKf+4LNpafROpxCU4BvT4WYi7QM3cJgO7Mlia67YzVrl3IYKkOctvcfj3pdlxTWlcd0RzEBj8Xicq+3tCgJ1mkMqExIylXQwYGflP77ErCw4hcC6wsWYhBl/wQMC/+VWE=

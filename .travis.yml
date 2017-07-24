@@ -5,10 +5,14 @@ before_install:
 - gem install bundler
 before_script:
 - createdb test
+gemfile:
+  - Gemfile
+  - gemfiles/activerecord_5_1.gemfile
+  - gemfiles/activerecord_5_0.gemfile
+  - gemfiles/activerecord_4_2.gemfile
 rvm:
-- '2.3.0'
-- '2.2'
-- '2.1'
+- '2.4.1'
+- '2.3.4'
 notifications:
   email: false
 env:

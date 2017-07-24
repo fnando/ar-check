@@ -1,9 +1,9 @@
 module AR
   module Check
     module SchemaDumper
-      def indexes(table, stream)
+      def table(table_name, stream)
         super
-        check_constraints(table, stream)
+        check_constraints(table_name, stream)
       end
 
       def check_constraints(table, stream)

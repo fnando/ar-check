@@ -1,5 +1,5 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
+require "simplecov"
+SimpleCov.start
 
 require "bundler/setup"
 require "ar/check"
@@ -25,6 +25,12 @@ module TestHelper
   end
 
   def with_migration(&block)
-    Class.new(ActiveRecord::Migration, &block).new
+    migration_class = if ActiveRecord::Migration.respond_to?(:[])
+                        ActiveRecord::Migration[ActiveRecord::Migration.current_version]
+                      else
+                        ActiveRecord::Migration
+                      end
+
+    Class.new(migration_class, &block).new
   end
 end

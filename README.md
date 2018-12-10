@@ -1,6 +1,6 @@
 # AR::Check
 
-[![Travis-CI](https://travis-ci.org/fnando/ar-check.png)](https://travis-ci.org/fnando/ar-check)
+[![Travis-CI](https://travis-ci.org/fnando/ar-check.svg)](https://travis-ci.org/fnando/ar-check)
 [![Code Climate](https://codeclimate.com/github/fnando/ar-check/badges/gpa.svg)](https://codeclimate.com/github/fnando/ar-check)
 [![Test Coverage](https://codeclimate.com/github/fnando/ar-check/badges/coverage.svg)](https://codeclimate.com/github/fnando/ar-check/coverage)
 [![Gem](https://img.shields.io/gem/v/ar-check.svg)](https://rubygems.org/gems/ar-check)

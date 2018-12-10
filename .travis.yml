@@ -2,19 +2,22 @@ language: ruby
 sudo: false
 cache: bundler
 before_install:
-- gem install bundler
+  - gem install bundler
 before_script:
-- createdb test
+  - createdb test
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - "./cc-test-reporter before-build"
+after_script:
+  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 gemfile:
   - Gemfile
   - gemfiles/activerecord_5_1.gemfile
   - gemfiles/activerecord_5_0.gemfile
-  - gemfiles/activerecord_4_2.gemfile
 rvm:
-- '2.4.1'
-- '2.3.4'
+  - 2.5.3
 notifications:
   email: false
 env:
   global:
-    secure: OvcOmU3tTrRrgXAAZpZVMbgwtxL7NtF35hf1sBhR8K+x1zZvcJkO1ADc60zzcXsMSIfavsD6uUPE0V92OJ+AgJPJq85skXr0UaYWmCDsEcnCqCl3HQYph1d6ntzZ2ZVC7Oz/nwuk2oaTL02wXuh/2XsztvDSTHWsNAWye787u4mPU4n4YXggsSCIU6zHSz5orfkKR4DkXT7jhrVP6lIn+an+j4RyZJ2Y7HE32vtV93bq1bdSiyJNs0fOY6iGpPRoD86mO2dRSdpQPPI4y0ArnPH6dFiWTIy94xWNyb64vvzDCqsJdj1A/4h13AUNqK5rG8nuWllWCe455o17fTPJchqM71ImjrOyeHFPkGvkID2UL0tgIApNl3bBdANWDITXLeJiAtDHIlFcisxda2qJs3pe4YM+UkspInofHvO80YFT4/IBfYB1bbWwcP8+bisvpUoStjZXO7VPAilxVC+RimGK1vp74WLHm1LQGkINpeEhFyhAxYyuOGHhTLlfquVAhQbCy6bV78NHeoxpTBjt6u0ZpBlDe9yJXO0NsRqyhCSKf+4LNpafROpxCU4BvT4WYi7QM3cJgO7Mlia67YzVrl3IYKkOctvcfj3pdlxTWlcd0RzEBj8Xicq+3tCgJ1mkMqExIylXQwYGflP77ErCw4hcC6wsWYhBl/wQMC/+VWE=
+    secure: TXvbcbVjNOjtxUI1ckKuPVtFv7uSlzh05ayUzS1tZuanZgG2hDLpBQMR79O55Ag9isVk5iGWg9CLalBtoIyp6chhxf/GOrn2PXUroOFmpZMvSrBZbDq+ZBUl7/5xm11GLv/wainQJG1nE/M3TcHm+CaPygPoow8ngpEANRfG4dzZa00eu9HZUahlxC2vLBcjvDG7uVMpnPCqFsOyUPiiBu3pGfmUsaeZ08GbTLbhy0GWnbYQ9gf6mWXmG6iVdNiJ4T2ftsicVqfTOSclSjkCfsCMn+Zh5BjSimEY8mv6YG/gSxlXyLD1cNRWDZPo262l7xg4W05Bp5axR6/VD7PljQpOEeFef5KZvPR/8O1A/XyN2BRyVEaHhGV1vfgEzcVLITdnfH3N2++dfVmkb7NcGFTF/tY2SxttdEAwNq/Ai0bUeaocpzGOepqc+JR3cjfswQJp5OqYXn7+beIydMYLzx7jT9n5Ju27y4wtqFSWjof9NgGq5STXKpAUrk6TqlOVwySwiiLH5mxjCfWmFyyucrIHTqUky6W1NnLJJlHJPfrFMhCbiANsSnsF8GWwwAM9ECoG2dcBCDjpinrzFFpilFes8wCZ6WauRyuUe9Xsk37oSIx7R5s67rYB5VQVr2PqlGZurcyjdoy2sR/c7vbblEI9kSV2YxsivNHO0QItc0Q=

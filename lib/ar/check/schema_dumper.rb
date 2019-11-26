@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AR
   module Check
     module SchemaDumper
@@ -13,8 +15,8 @@ module AR
         constraints.each do |constraint|
           statement = [
             "add_check",
-            ":#{constraint["table"]},",
-            ":#{constraint["name"].gsub("_on_#{table}", "")},",
+            ":#{constraint['table']},",
+            ":#{constraint['name'].gsub("_on_#{table}", '')},",
             constraint["expression"][1..-2].inspect
           ].join(" ")
 

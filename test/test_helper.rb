@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "simplecov"
 SimpleCov.start
 
@@ -15,7 +17,11 @@ end
 module TestHelper
   def recreate_table
     ActiveRecord::Schema.define(version: 0) do
-      drop_table(:things) rescue nil
+      begin
+        drop_table(:things)
+      rescue StandardError
+        nil
+      end
 
       create_table :things do |t|
         t.integer :quantity, default: 0

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "./lib/ar/check/version"
 
 Gem::Specification.new do |spec|

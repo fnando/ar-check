@@ -4,9 +4,9 @@ module AR
   module Check
     module Adapter
       def check_constraints(table)
-        result = select_all <<-SQL.strip_heredoc
+        result = select_all <<~SQL
           SELECT c.conname  AS name,
-                 c.consrc   AS expression,
+                 pg_get_constraintdef(c.oid) AS expression,
                  t1.relname AS table
           FROM pg_constraint c
           JOIN pg_class t1 ON c.conrelid = t1.oid

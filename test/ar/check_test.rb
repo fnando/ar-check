@@ -20,7 +20,7 @@ class CheckTest < Minitest::Test
       Thing.create(quantity: -1)
     end
 
-    assert error.message.include?(%[new row for relation "things" violates check constraint "positive_quantity_on_things"])
+    assert_includes error.message, %[new row for relation "things" violates check constraint "positive_quantity_on_things"]
   end
 
   test "removes constraint" do
@@ -51,6 +51,6 @@ class CheckTest < Minitest::Test
     ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, stream)
     contents = stream.tap(&:rewind).read
 
-    assert contents.include?(%[add_check :things, :slug_format, "(slug)::text ~* '^[a-z0-9-]{4,20}$'::text"])
+    assert_includes contents, %[add_check :things, :slug_format, "((slug)::text ~* '^[a-z0-9-]{4,20}$'::text)"]
   end
 end

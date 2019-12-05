@@ -13,11 +13,15 @@ module AR
         return if constraints.empty?
 
         constraints.each do |constraint|
+          expression = constraint["expression"]
+                       .gsub(/^\s*CHECK\s+\(/i, "")
+                       .gsub(/\)$/, "")
+
           statement = [
             "add_check",
             ":#{constraint['table']},",
             ":#{constraint['name'].gsub("_on_#{table}", '')},",
-            constraint["expression"][1..-2].inspect
+            expression.inspect
           ].join(" ")
 
           stream.puts "  #{statement}"

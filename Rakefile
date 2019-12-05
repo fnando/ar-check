@@ -12,6 +12,8 @@ Rake::TestTask.new(:test) do |t|
   t.warning = false
 end
 
-RuboCop::RakeTask.new(:rubocop)
+RuboCop::RakeTask.new(:rubocop) do |t|
+  t.options += ["--config", File.join(__dir__, ".rubocop.yml")]
+end
 
 task default: %i[test rubocop]

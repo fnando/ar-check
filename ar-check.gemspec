@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = AR::Check::VERSION
   spec.authors       = ["Nando Vieira"]
   spec.email         = ["fnando.vieira@gmail.com"]
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.summary       = "Enable PostgreSQL's CHECK constraints on ActiveRecord migrations"
   spec.description   = spec.summary

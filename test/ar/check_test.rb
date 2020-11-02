@@ -20,7 +20,8 @@ class CheckTest < Minitest::Test
       Thing.create(quantity: -1)
     end
 
-    assert_includes error.message, %[new row for relation "things" violates check constraint "positive_quantity_on_things"]
+    assert_includes error.message,
+                    %[new row for relation "things" violates check constraint "positive_quantity_on_things"]
   end
 
   test "removes constraint" do
